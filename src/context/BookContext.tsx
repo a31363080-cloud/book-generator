@@ -468,6 +468,11 @@ export function BookProvider({ children }: { children: React.ReactNode }) {
       setCurrentBook(newBook);
       setStoredCurrentBookId(newBookId);
       setAllBooks(listBooks());
+      return newBookId;
+    },
+    []
+  );
+
   const createBookWithChapters = useCallback(
     (
       metadata: Partial<BookMetadata>,

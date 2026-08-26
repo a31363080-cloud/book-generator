@@ -18,6 +18,7 @@ import {
   ChevronDown,
   Globe,
   BookOpen,
+  Wand2,
 } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { Dropdown } from '../ui/Dropdown';
