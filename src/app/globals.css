@@ -1,0 +1,226 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+  }
+
+  .theme-light {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    background-color: #fcfcfd;
+    color: #18181b;
+  }
+
+  .theme-sepia {
+    --background: 38 45% 97%;
+    --foreground: 25 35% 15%;
+    background-color: #fbf6ec;
+    color: #2b2319;
+  }
+
+  .theme-dark {
+    --background: 240 10% 5.5%;
+    --foreground: 0 0% 98%;
+    background-color: #121215;
+    color: #f4f4f5;
+  }
+
+  .theme-night {
+    --background: 240 10% 2%;
+    --foreground: 0 0% 100%;
+    background-color: #050507;
+    color: #ffffff;
+  }
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(150, 150, 150, 0.25);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(150, 150, 150, 0.45);
+}
+
+/* TipTap Editor & ProseMirror Styling */
+.ProseMirror {
+  outline: none;
+  min-height: 520px;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #a1a1aa;
+  pointer-events: none;
+  height: 0;
+  font-style: normal;
+}
+
+[dir="rtl"] .ProseMirror p.is-editor-empty:first-child::before {
+  float: right;
+}
+
+.ProseMirror h1 {
+  font-size: 2.15em;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+  margin-top: 1.5em;
+  margin-bottom: 0.6em;
+}
+
+.ProseMirror h2 {
+  font-size: 1.5em;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin-top: 1.4em;
+  margin-bottom: 0.5em;
+}
+
+.ProseMirror h3 {
+  font-size: 1.2em;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: 1.2em;
+  margin-bottom: 0.4em;
+}
+
+.ProseMirror p {
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+  line-height: 1.8;
+}
+
+.ProseMirror blockquote {
+  border-left: 3px solid #0284c7;
+  padding-left: 1.15rem;
+  font-style: italic;
+  margin: 1.4rem 0;
+  color: #52525b;
+}
+
+.dark .ProseMirror blockquote {
+  color: #a1a1aa;
+}
+
+[dir="rtl"] .ProseMirror blockquote {
+  border-left: none;
+  border-right: 3px solid #0284c7;
+  padding-left: 0;
+  padding-right: 1.15rem;
+}
+
+.ProseMirror pre {
+  background: #18181b;
+  color: #f4f4f5;
+  font-family: 'JetBrains Mono', monospace;
+  padding: 0.9rem 1.15rem;
+  border-radius: 0.75rem;
+  margin: 1.25rem 0;
+  direction: ltr;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ProseMirror code {
+  background: rgba(0, 0, 0, 0.06);
+  padding: 0.2em 0.4em;
+  border-radius: 0.35rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.88em;
+}
+
+.dark .ProseMirror code {
+  background: rgba(255, 255, 255, 0.1);
+  color: #e4e4e7;
+}
+
+.ProseMirror hr {
+  border: none;
+  border-top: 2px dashed #e4e4e7;
+  margin: 2.25rem 0;
+}
+
+.dark .ProseMirror hr {
+  border-top-color: #27272a;
+}
+
+/* TipTap Table Styling */
+.ProseMirror table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  margin: 1.75rem 0;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.ProseMirror td,
+.ProseMirror th {
+  min-width: 1em;
+  border: 1px solid #e4e4e7;
+  padding: 10px 14px;
+  vertical-align: top;
+  box-sizing: border-box;
+  position: relative;
+  font-size: 0.9em;
+}
+
+.dark .ProseMirror td,
+.dark .ProseMirror th {
+  border-color: #27272a;
+}
+
+.ProseMirror th {
+  font-weight: 600;
+  text-align: left;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+[dir="rtl"] .ProseMirror th {
+  text-align: right;
+}
+
+.dark .ProseMirror th {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.ProseMirror .selectedCell:after {
+  z-index: 2;
+  position: absolute;
+  content: "";
+  left: 0; right: 0; top: 0; bottom: 0;
+  background: rgba(14, 165, 233, 0.15);
+  pointer-events: none;
+}
+
+/* Arabic Typography */
+.font-arabic {
+  font-family: 'Cairo', 'Amiri', 'Tajawal', 'Noto Naskh Arabic', sans-serif;
+  line-height: 1.85;
+}
+
+/* Print CSS */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .print\\:break-after-page {
+    break-after: page;
+    page-break-after: always;
+  }
+}
