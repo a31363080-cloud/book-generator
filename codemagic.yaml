@@ -1,0 +1,47 @@
+# ─── Codemagic CI/CD Configuration for Next.js Web App ────────────────────────
+workflows:
+  nextjs-web-build:
+    name: Next.js Web App Build & Validation
+    max_build_duration: 30
+    instance_type: linux_x2
+    environment:
+      node: 20
+      npm: 10
+      vars:
+        NODE_ENV: production
+        NEXT_TELEMETRY_DISABLED: 1
+    triggering:
+      events:
+        - push
+        - pull_request
+      branch_patterns:
+        - pattern: 'main'
+          include: true
+          source: true
+    scripts:
+      - name: Install Node.js Dependencies
+        script: |
+          npm ci --legacy-peer-deps || npm install --legacy-peer-deps
+      - name: Run TypeScript Check
+        script: |
+          npx tsc --noEmit
+      - name: Build Next.js Production Bundle
+        script: |
+          npm run build
+    artifacts:
+      - .next/**/*
+      - out/**/*
+
+  node-test-workflow:
+    name: Node.js Lint & Typecheck
+    max_build_duration: 15
+    instance_type: linux_x2
+    environment:
+      node: 20
+    scripts:
+      - name: Install Dependencies
+        script: |
+          npm install --legacy-peer-deps
+      - name: Typecheck
+        script: |
+          npx tsc --noEmit
