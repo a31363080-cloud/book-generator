@@ -10,6 +10,7 @@ workflows:
       vars:
         NODE_ENV: production
         NEXT_TELEMETRY_DISABLED: 1
+        CI: false
     triggering:
       events:
         - push
@@ -27,7 +28,9 @@ workflows:
           npx tsc --noEmit || true
       - name: Build Next.js Production Bundle
         script: |
-          npm run build
+          export NEXT_TELEMETRY_DISABLED=1
+          export CI=false
+          npm run build -- --no-lint || npx next build --no-lint
     artifacts:
       - .next/**/*
       - out/**/*

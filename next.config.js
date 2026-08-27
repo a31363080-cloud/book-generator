@@ -1,10 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   typescript: {
-    // Allow production builds to successfully complete even if there are type warnings
+    // Ignore TypeScript errors in production builds
     ignoreBuildErrors: true,
   },
   eslint: {
+    // Ignore ESLint errors in production builds
     ignoreDuringBuilds: true,
   },
   optimizeFonts: false,
@@ -12,4 +13,4 @@ const nextConfig = {
   swcMinify: true,
 };
 
-export default nextConfig;
+module.exports = nextConfig;
