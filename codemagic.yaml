@@ -3,7 +3,7 @@ workflows:
   nextjs-web-build:
     name: Next.js Web App Build & Validation
     max_build_duration: 30
-    instance_type: linux_x2
+    instance_type: mac_mini_m1
     environment:
       node: 20
       npm: 10
@@ -35,7 +35,7 @@ workflows:
   node-test-workflow:
     name: Node.js Lint & Typecheck
     max_build_duration: 15
-    instance_type: linux_x2
+    instance_type: mac_mini_m1
     environment:
       node: 20
     scripts:
