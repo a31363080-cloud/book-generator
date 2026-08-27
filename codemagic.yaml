@@ -9,8 +9,14 @@ workflows:
       npm: 10
       vars:
         NODE_ENV: production
-        NEXT_TELEMETRY_DISABLED: 1
-        CI: false
+        NEXT_TELEMETRY_DISABLED: "1"
+        CI: "false"
+        # Dummy API keys so the build doesn't fail on missing env vars
+        GEMINI_API_KEY: "placeholder_build_only"
+        NEXT_PUBLIC_GEMINI_API_KEY: "placeholder_build_only"
+        OPENAI_API_KEY: "placeholder_build_only"
+        ANTHROPIC_API_KEY: "placeholder_build_only"
+        DEEPSEEK_API_KEY: "placeholder_build_only"
     triggering:
       events:
         - push
@@ -22,7 +28,9 @@ workflows:
     scripts:
       - name: Install Node.js Dependencies
         script: |
-          npm ci --legacy-peer-deps || npm install --legacy-peer-deps
+          node --version
+          npm --version
+          npm install --legacy-peer-deps
       - name: Run TypeScript Check
         script: |
           npx tsc --noEmit || true
@@ -30,7 +38,9 @@ workflows:
         script: |
           export NEXT_TELEMETRY_DISABLED=1
           export CI=false
-          npm run build -- --no-lint || npx next build --no-lint
+          export GEMINI_API_KEY=placeholder_build_only
+          export NEXT_PUBLIC_GEMINI_API_KEY=placeholder_build_only
+          npm run build
     artifacts:
       - .next/**/*
       - out/**/*
