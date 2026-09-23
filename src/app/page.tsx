@@ -1,16 +1,16 @@
 'use client';
 
 import React, { useState } from 'react';
-import { BookProvider } from '../context/BookContext';
-import { TopNav } from '../components/workspace/TopNav';
-import { Sidebar } from '../components/workspace/Sidebar';
-import { RichEditor } from '../components/editor/RichEditor';
-import { CoverStudioModal } from '../components/cover/CoverStudioModal';
-import { MetadataModal } from '../components/workspace/MetadataModal';
-import { BookStatsModal } from '../components/workspace/BookStatsModal';
-import { BookSelectorModal } from '../components/workspace/BookSelectorModal';
-import { ExportModal } from '../components/export/ExportModal';
-import { AIBookWizardModal } from '../components/workspace/AIBookWizardModal';
+import { BookProvider } from '@/context/BookContext';
+import { TopNav } from '@/components/workspace/TopNav';
+import { Sidebar } from '@/components/workspace/Sidebar';
+import { RichEditor } from '@/components/editor/RichEditor';
+import { CoverStudioModal } from '@/components/cover/CoverStudioModal';
+import { MetadataModal } from '@/components/workspace/MetadataModal';
+import { BookStatsModal } from '@/components/workspace/BookStatsModal';
+import { BookSelectorModal } from '@/components/workspace/BookSelectorModal';
+import { ExportModal } from '@/components/export/ExportModal';
+import { AIBookWizardModal } from '@/components/workspace/AIBookWizardModal';
 
 // Root page — no mounting guards, no loading screens.
 // The BookProvider initializes state from defaults; localStorage sync
